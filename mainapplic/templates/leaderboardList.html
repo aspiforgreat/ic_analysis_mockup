@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block content %}
+     <h1 class="text-center"> Leaderboards </h1>
+<br>
+
+<header class ="container">
+    <div class ='row'>
+            <div class="col-lg-12">
+                <h2 class="text-center">  Database</h2>
+                <hr>
+            </div>
+    </div>
+</header>
+
+<section class="container">
+<div class="row">
+    <div class="col-lg-12">
+
+            <table class="table table-bordered">
+                {% for leaderboard in leaderboards %}
+                <tr>
+                    <td>
+                         <a  href="{% url 'leaderboard' leaderboard.id %}">
+                               {{ leaderboard.dataset.title }}
+                         </a>
+                </tr>
+                <br>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+
+
+</section>
+{%endblock%}
