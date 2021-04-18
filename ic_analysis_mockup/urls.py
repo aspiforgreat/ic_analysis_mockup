@@ -24,16 +24,17 @@ from ic_analysis_mockup.serializers import SubmissionViewSet
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 
-router.register(r'submissions', SubmissionViewSet)
+router.register(r'Submissions', SubmissionViewSet)
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls',namespace ='rest_framework')),
-    path('submissions', include(router.urls),name='submissionsGET'),
+    path('api/', include(router.urls),name='submissionsGET'),
     path('', views.home,name='home'),
     path('leaderboard/<int:leaderboard_id>', views.leaderboard,name='leaderboard'),
     path('leaderboards', views.leaderboardList,name='leaderboardList'),
     path('datasets', views.datasets,name='datasets'),
+    path('submissions/', views.submissionList),
 
 ]
