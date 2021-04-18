@@ -16,30 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from mainapplic import  views
-from mainapplic.models import Submission,User
-from rest_framework import routers, serializers, viewsets
-
-# Serializers define the API representation.
-class SubmissionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Submission
-        fields = ['title','date_of_creation','user']
+from rest_framework import routers
+from ic_analysis_mockup.serializers import SubmissionViewSet
 
 
-# ViewSets define the view behavior.
-class SubmissionViewSet(viewsets.ModelViewSet):
-    queryset = Submission.objects.all()
-    serializer_class = SubmissionSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+
 router.register(r'submissions', SubmissionViewSet)
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls',namespace ='rest_framework')),
-    path('api', include(router.urls)),
+    path('submissions', include(router.urls),name='submissionsGET'),
     path('', views.home,name='home'),
     path('leaderboard/<int:leaderboard_id>', views.leaderboard,name='leaderboard'),
     path('leaderboards', views.leaderboardList,name='leaderboardList'),
