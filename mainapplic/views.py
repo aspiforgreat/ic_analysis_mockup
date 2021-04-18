@@ -17,7 +17,7 @@ def leaderboard(request,leaderboard_id):
     except Leaderboard.DoesNotExist:
         raise Http404('Employee not found')
     #render the request in an html and pass the dictionary with the info we eed
-    return render(request,'leaderboard.html',{'leader board':leaderboard})
+    return render(request,'leaderboard.html',{'leaderboard':leaderboard})
 
 def leaderboardList(request):
     leaderboards = Leaderboard.objects.all()
