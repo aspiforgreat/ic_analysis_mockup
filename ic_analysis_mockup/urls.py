@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path,include
 from mainapplic import  views
 from rest_framework import routers
-from ic_analysis_mockup.serializers import SubmissionViewSet
+from ic_analysis_mockup.serializers import *
 
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 
-router.register(r'Submissions', SubmissionViewSet)
+router.register(r'submissions', SubmissionViewSet)
+router.register(r'benchmarks', BenchmarkViewSet)
+router.register(r'algorithms', AlgorithmViewSet)
+router.register(r'datasets', DatasetViewSet)
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [

@@ -32,7 +32,7 @@ def datasets(request):
 
 
 # was in its own file, we should split this into its own controller for each class
-#and leave views to be the main controller
+#and leave views to be the main controller, this is pretty useless if u have a viewset but well
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
