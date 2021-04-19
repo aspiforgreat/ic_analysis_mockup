@@ -28,6 +28,7 @@ router.register(r'submissions', SubmissionViewSet)
 router.register(r'benchmarks', BenchmarkViewSet)
 router.register(r'algorithms', AlgorithmViewSet)
 router.register(r'datasets', DatasetViewSet)
+router.register(r'users', UserViewSet)
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [
