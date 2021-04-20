@@ -22,6 +22,7 @@ class Dataset(models.Model):
     description = models.CharField(max_length=1000, blank=True)
     paper = models.FileField(blank=True)
 
+
     def __str__(self):
         return self.title
 
