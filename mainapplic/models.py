@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Algorithm (models.Model):
     title = models.CharField(max_length=300)
     description = models.CharField(max_length=1000, blank=True)
@@ -19,6 +18,8 @@ class Benchmark(models.Model):
 class Dataset(models.Model):
     title = models.CharField(max_length=300)
     #leaderboardAccess = models.OneToOneField('Leaderboard', related_name='leaderboard',on_delete=models.DO_NOTHING,blank=True)
+    data = models.ImageField(upload_to='images',default='static/assets/images/banner-bg.jpg')
+
     def __str__(self):
         return self.title
 

@@ -35,7 +35,7 @@ class AlgorithmViewSet(viewsets.ModelViewSet):
 class DatasetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Dataset
-        fields = ['title']
+        fields = ['title','data']
 
 
 class DatasetViewSet(viewsets.ModelViewSet):
