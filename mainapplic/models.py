@@ -36,7 +36,7 @@ class Submission(models.Model):
 
     benchmark = models.ForeignKey('Benchmark', blank=False,on_delete=models.DO_NOTHING)
     algorithm = models.ForeignKey('Algorithm', blank=False,on_delete=models.DO_NOTHING)
-    dataset =models.ForeignKey('Dataset', blank=False,on_delete=models.DO_NOTHING)
+    dataset = models.ForeignKey('Dataset', blank=False,on_delete=models.DO_NOTHING)
 
     user = models.ForeignKey('User', blank=False,on_delete=models.DO_NOTHING)
 
@@ -49,8 +49,6 @@ class Submission(models.Model):
     # so submission has a foreign key
 class User(models.Model):
     name =  models.CharField(max_length=100)
-
-
     def __str__(self):
         return self.name
 

@@ -5,3 +5,18 @@
                             </a>
                     </td>
                     -->
+
+
+
+class UserTest(TestCase):
+    def test_details(self):
+         # Create an instance of a GET request.
+        self.factory = RequestFactory()
+        # self.user = User.objects.create_user('Max Mustermann')
+        c = Client()
+        response = c.post('/api/users/', {'name':'Max Mustermann'})
+        print(response.status_code)
+        testUser  = User.objects.get(self,name = 'Max Mustermann')
+        request = self.factory.get('/api/users/%s'.format(testUser.id))
+        request.user = testUser
+        print(request.user)
