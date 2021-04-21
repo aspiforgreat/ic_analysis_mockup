@@ -20,7 +20,7 @@ class Dataset(models.Model):
     #leaderboardAccess = models.OneToOneField('Leaderboard', related_name='leaderboard',on_delete=models.DO_NOTHING,blank=True)
     data = models.ImageField(upload_to='images',default='static/assets/images/banner-bg.jpg')
     description = models.CharField(max_length=1000, blank=True)
-    paper = models.FileField(blank=True)
+    paper = models.FileField(blank=True,upload_to='papers')
 
 
     def __str__(self):
