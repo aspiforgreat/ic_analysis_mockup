@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from mainapplic import  views
+from mainapplic import views
 from rest_framework import routers
+from rest_framework.schemas import get_schema_view
 from ic_analysis_mockup.serializers import *
-
-
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -36,9 +35,8 @@ urlpatterns = [
     path('api-auth/',include('rest_framework.urls',namespace ='rest_framework')),
     path('api/', include(router.urls),name='submissionsGET'),
     path('', views.home,name='home'),
-    path('leaderboard/<int:leaderboard_id>', views.leaderboard,name='leaderboard'),
-    path('leaderboards', views.leaderboardList,name='leaderboardList'),
-    path('datasets', views.datasets,name='datasets'),
-    path('submissions/', views.submissionList),
-
+    path('openapi', get_schema_view(
+        title="IC Analysis",
+        description="Api Documentation in yaml"
+    ), name='openapi-schema')
 ]
