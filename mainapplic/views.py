@@ -4,6 +4,8 @@ from django.http import Http404
 
 
 # Create your views here.
+
+
 def home(request):
     return render(request, 'index.html')
 
@@ -12,11 +14,13 @@ def home(request):
 #passing a dataset here might be a bad idea better delegate to another class so here we only choose what to display
 
 
+
 # was in its own file, we should split this into its own controller for each class
 #and leave views to be the main controller, this is pretty useless if u have a viewset but well
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Submission
+from mainapplic.models import Submission
 from ic_analysis_mockup.serializers import SubmissionSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
