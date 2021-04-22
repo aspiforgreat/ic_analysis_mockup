@@ -17,7 +17,6 @@ class Benchmark(models.Model):
 
 class Dataset(models.Model):
     title = models.CharField(max_length=300)
-    #leaderboardAccess = models.OneToOneField('Leaderboard', related_name='leaderboard',on_delete=models.DO_NOTHING,blank=True)
     data = models.ImageField(upload_to='images',default='static/assets/images/banner-bg.jpg')
     description = models.CharField(max_length=1000, blank=True)
     paper = models.FileField(blank=True,upload_to='papers')
@@ -46,7 +45,7 @@ class Submission(models.Model):
 
 
 # One User has Many Submissions, A submission only has one User but Many Users have Many Submissions
-    # so submission has a foreign key
+# so submission has a foreign key
 class User(models.Model):
     name =  models.CharField(max_length=100)
     def __str__(self):
@@ -54,8 +53,8 @@ class User(models.Model):
 
 
 #a Leaderboad has a lot of lines but a leaderboard line is only related to one leaderboard
-    # designed it this way makes us have to assign the rank to each leaderboardline and then update it manually,
-    # might be better to compute it and display it, but might be a high effort every time
+# designed it this way makes us have to assign the rank to each leaderboardline and then update it manually,
+# might be better to compute it and display it, but might be a high effort every time
 class Leaderboard(models.Model):
     dataset = models.OneToOneField(Dataset,on_delete=models.CASCADE,blank= False)
 
